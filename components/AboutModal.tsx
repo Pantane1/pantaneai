@@ -22,7 +22,7 @@ const AboutModal: React.FC<AboutModalProps> = ({ onClose }) => {
         
         <div className="flex flex-col items-center text-center">
           <PantaneLogo className="w-16 h-16 mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">Pantane AI Hub</h2>
+          <h2 className="text-2xl font-bold text-white mb-2">Pantane AI</h2>
           <p className="text-gray-400 mb-6">Innovator & Builder</p>
 
           <div className="w-full text-left space-y-4">

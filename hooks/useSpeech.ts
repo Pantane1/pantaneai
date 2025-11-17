@@ -43,18 +43,18 @@ export const useSpeech = (onTranscript: (text: string) => void) => {
       onTranscript(finalTranscript || interimTranscript);
     };
     
+    // When recognition ends for any reason (manual stop, silence, etc.),
+    // update the state to reflect that we are no longer listening.
     recognition.onend = () => {
-        if (isListening) {
-            recognition.start(); // Restart if it was meant to be listening
-        }
+        setIsListening(false);
     };
 
     recognitionRef.current = recognition;
 
     return () => {
+      recognition.onend = null; // Avoid state updates on unmounted component
       recognition.stop();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onTranscript]);
 
   const startListening = useCallback(() => {

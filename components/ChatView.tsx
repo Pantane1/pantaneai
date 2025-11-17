@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { marked } from 'marked';
 import { Message, UploadedFile, MessagePart } from '../types';
 import { getChatStream } from '../services/geminiService';
 import { useSpeech } from '../hooks/useSpeech';
-import { SendIcon, MicIcon, PlusIcon, CloseIcon, SpeakerIcon } from './icons';
+import { SendIcon, MicIcon, PlusIcon, CloseIcon } from './icons';
+import { MessageBubble } from './MessageBubble';
 
 const fileToBase64 = (file: File): Promise<string> =>
   new Promise((resolve, reject) => {
@@ -16,49 +16,19 @@ const fileToBase64 = (file: File): Promise<string> =>
 const WelcomeCard: React.FC = () => (
   <div className="text-center p-8">
     <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 mb-2">
-      Pantane AI Hub
+      Pantane AI
     </h1>
-    <p className="text-gray-400">Powered by Pantane.</p>
+    <p className="text-gray-400">limitless😌</p>
   </div>
 );
 
-const MessageBubble: React.FC<{ message: Message; onSpeak: (text: string) => void; }> = ({ message, onSpeak }) => {
-    const combinedText = message.parts.map(p => p.text || '').join('\n');
-    const htmlContent = marked.parse(combinedText) as string;
-
-    const handleSpeak = () => {
-        if (combinedText) {
-            onSpeak(combinedText);
-        }
-    };
-
-  return (
-    <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-6`}>
-      <div className={`max-w-2xl px-5 py-3 rounded-2xl ${message.role === 'user' ? 'bg-indigo-600 text-white rounded-br-none' : 'bg-gray-700 text-gray-200 rounded-bl-none'}`}>
-        {message.parts.map((part, index) => (
-          <div key={index}>
-            {part.inlineData && (
-              <img src={`data:${part.inlineData.mimeType};base64,${part.inlineData.data}`} alt="uploaded content" className="rounded-lg max-w-xs my-2"/>
-            )}
-          </div>
-        ))}
-         <div className="prose prose-invert prose-sm" dangerouslySetInnerHTML={{ __html: htmlContent }} />
-         {message.role === 'model' && combinedText && (
-            <button onClick={handleSpeak} className="mt-2 text-gray-400 hover:text-white transition-colors">
-                <SpeakerIcon />
-            </button>
-         )}
-      </div>
-    </div>
-  );
-};
-
 interface ChatViewProps {
     isVoiceOutputEnabled: boolean;
+    messages: Message[];
+    setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 }
 
-const ChatView: React.FC<ChatViewProps> = ({ isVoiceOutputEnabled }) => {
-    const [messages, setMessages] = useState<Message[]>([]);
+const ChatView: React.FC<ChatViewProps> = ({ isVoiceOutputEnabled, messages, setMessages }) => {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [uploads, setUploads] = useState<UploadedFile[]>([]);
@@ -79,6 +49,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isVoiceOutputEnabled }) => {
         if (event.target.files) {
             const files = Array.from(event.target.files);
             const newUploads = await Promise.all(
+                // FIX: Explicitly type the 'file' parameter to resolve TS error.
                 files.map(async (file: File) => ({
                     name: file.name,
                     type: file.type,
@@ -151,7 +122,7 @@ const ChatView: React.FC<ChatViewProps> = ({ isVoiceOutputEnabled }) => {
         } finally {
             setIsLoading(false);
         }
-    }, [input, uploads, messages, speak, isVoiceOutputEnabled]);
+    }, [input, uploads, messages, speak, isVoiceOutputEnabled, setMessages]);
     
     return (
         <div className={`flex flex-col h-full w-full p-4 md:p-6 transition-all duration-500 ${hasStartedChat ? 'justify-between' : 'justify-center items-center'}`}>

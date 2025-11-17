@@ -1,29 +1,22 @@
-
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { marked } from 'marked';
 import { Message } from '../types';
 import { analyzeFileContent } from '../services/geminiService';
 import { FileIcon, SendIcon } from './icons';
+import { MessageBubble } from './MessageBubble';
+import { useSpeech } from '../hooks/useSpeech';
 
-const MessageBubble: React.FC<{ message: Message }> = ({ message }) => {
-    const htmlContent = marked.parse(message.parts.map(p => p.text || '').join('\n')) as string;
-    return (
-        <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} mb-4`}>
-            <div className={`max-w-2xl px-4 py-2 rounded-lg ${message.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-700 text-gray-200'}`}>
-                <div className="prose prose-invert prose-sm" dangerouslySetInnerHTML={{ __html: htmlContent }} />
-            </div>
-        </div>
-    );
-};
+interface FileAnalysisProps {
+    messages: Message[];
+    setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}
 
-
-const FileAnalysis: React.FC = () => {
+const FileAnalysis: React.FC<FileAnalysisProps> = ({ messages, setMessages }) => {
     const [file, setFile] = useState<File | null>(null);
     const [fileContent, setFileContent] = useState<string | null>(null);
-    const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const chatContainerRef = useRef<HTMLDivElement>(null);
+    const { speak } = useSpeech(() => {});
 
     useEffect(() => {
         if (chatContainerRef.current) {
@@ -38,7 +31,7 @@ const FileAnalysis: React.FC = () => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 setFileContent(e.target?.result as string);
-                setMessages([]);
+                setMessages([]); // Clear previous analysis chat on new file
             };
             reader.readAsText(selectedFile);
         }
@@ -82,7 +75,7 @@ const FileAnalysis: React.FC = () => {
         } finally {
             setIsLoading(false);
         }
-    }, [input, fileContent]);
+    }, [input, fileContent, setMessages]);
     
     return (
         <div className="p-4 md:p-8 h-full flex flex-col items-center">
@@ -111,7 +104,7 @@ const FileAnalysis: React.FC = () => {
                                 {fileContent ? 'Ask a question about the document to begin.' : 'Upload a document to start the analysis.'}
                             </div>
                         )}
-                        {messages.map((msg, index) => <MessageBubble key={index} message={msg} />)}
+                        {messages.map((msg, index) => <MessageBubble key={index} message={msg} onSpeak={speak} />)}
                         {isLoading && messages[messages.length - 1]?.role === 'user' && (
                             <div className="flex justify-start mb-4">
                                 <div className="px-4 py-2 rounded-lg bg-gray-700">

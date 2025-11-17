@@ -1,11 +1,14 @@
 import React from 'react';
-import { Page } from '../types';
-import { PantaneLogo, ChatIcon, ImageIcon, FileIcon, InfoIcon, SettingsIcon } from './icons';
+import { Page, User } from '../types';
+import { PantaneLogo, ChatIcon, ImageIcon, FileIcon, InfoIcon, SettingsIcon, UserIcon, LogoutIcon, PlusIcon } from './icons';
 
 interface SidebarProps {
   currentPage: Page;
+  currentUser: User;
   onSetPage: (page: Page) => void;
   onOpenAbout: () => void;
+  onLogout: () => void;
+  onNewChat: () => void;
 }
 
 const NavItem: React.FC<{
@@ -28,13 +31,24 @@ const NavItem: React.FC<{
   );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ currentPage, onSetPage, onOpenAbout }) => {
+const Sidebar: React.FC<SidebarProps> = ({ currentPage, currentUser, onSetPage, onOpenAbout, onLogout, onNewChat }) => {
   return (
     <nav className="w-64 h-full bg-gray-800/50 backdrop-blur-lg border-r border-gray-700/50 p-4 flex flex-col">
-      <div className="flex items-center mb-10 px-2">
+      <div className="flex items-center mb-6 px-2">
         <PantaneLogo className="w-10 h-10" />
-        <h1 className="ml-3 text-xl font-bold text-white tracking-wider">Pantane AI Hub</h1>
+        <h1 className="ml-3 text-xl font-bold text-white tracking-wider">Pantane AI</h1>
       </div>
+      
+      <div className="px-1 mb-4">
+        <button
+          onClick={onNewChat}
+          className="flex items-center justify-center w-full px-4 py-2 rounded-lg transition-all duration-200 bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow-[0_0_15px_rgba(99,102,241,0.4)]"
+        >
+          <PlusIcon className="w-5 h-5 mr-2" />
+          New Chat
+        </button>
+      </div>
+
       <div className="flex flex-col space-y-2">
         <NavItem
           icon={<ChatIcon />}
@@ -61,13 +75,30 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPage, onSetPage, onOpenAbout }
           onClick={() => onSetPage('settings')}
         />
       </div>
-      <div className="mt-auto">
-        <NavItem
+      <div className="mt-auto border-t border-gray-700/50 pt-4">
+        <div className="px-4 py-3 flex items-center">
+            {currentUser.profilePicture ? (
+              <img src={currentUser.profilePicture} alt="User" className="w-8 h-8 rounded-full" />
+            ) : (
+              <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center">
+                <UserIcon className="w-5 h-5 text-gray-400"/>
+              </div>
+            )}
+            <span className="ml-3 font-medium text-white truncate">{currentUser.fullName}</span>
+        </div>
+         <NavItem
           icon={<InfoIcon />}
           label="About"
           isActive={false}
           onClick={onOpenAbout}
         />
+        <button
+          onClick={onLogout}
+          className="flex items-center w-full px-4 py-3 rounded-lg text-gray-400 hover:bg-red-500/20 hover:text-red-400 transition-all duration-200"
+        >
+            <LogoutIcon className="w-6 h-6" />
+            <span className="ml-4 font-medium">Logout</span>
+        </button>
       </div>
     </nav>
   );

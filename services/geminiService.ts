@@ -40,13 +40,13 @@ export const getChatStream = async (history: Message[], newMessage: Message) => 
     }
 };
 
-export const generateImage = async (prompt: string, aspectRatio: string = "1:1"): Promise<string[]> => {
+export const generateImage = async (prompt: string, aspectRatio: string = "1:1", numberOfImages: number = 1): Promise<string[]> => {
     try {
         const response = await ai.models.generateImages({
             model: 'imagen-4.0-generate-001',
             prompt,
             config: {
-                numberOfImages: 1,
+                numberOfImages,
                 outputMimeType: 'image/jpeg',
                 aspectRatio: aspectRatio,
             },
