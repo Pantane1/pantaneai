@@ -1,0 +1,7 @@
+{
+  "name": "Pantane AI Hub",
+  "description": "A full-stack AI super app generator combining chat, image generation, document analysis, and voice interaction. Powered by Gemini.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
