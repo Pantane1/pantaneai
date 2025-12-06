@@ -38,8 +38,8 @@ If you have feedback, suggestions, or ideas — I’d love to hear from you.
 Your feedback means everything as I continue improving this project.
 If you’d like to share ideas, report issues, or collaborate:
 
-📧 [![Email_Me](https://img.shields.io/badge/Email-pantane254@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pantane254@gmail.com)
-⚛️ [![Chat_me](https://img.shields.io/badge/WhatsApp-Chat-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/254740312402?text=Hi%20Pantane)
+ [![Email_Me](https://img.shields.io/badge/Email-me-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pantane254@gmail.com)
+ [![Chat_me](https://img.shields.io/badge/WhatsApp-Chat-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/254740312402?text=Hi%20Pantane)
 
 🤝 Contributions
 
