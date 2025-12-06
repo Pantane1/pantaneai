@@ -1,4 +1,4 @@
-🚀 Launch Announcement — Pantane AI Assistant
+## Pantane AI Assistant
 
 Welcome to the official repository for Pantane AI Assistant, a lightweight and modern AI-powered web application built to deliver fast, conversational, and intelligent responses.
 
@@ -29,18 +29,17 @@ If you have feedback, suggestions, or ideas — I’d love to hear from you.
 
 🌐 Live Demo
 
-👉 Netlify Deployment:
-https://your-netlify-link-here
+👉 [![PantaneAI](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://pantaneai.netlify.app/)
 
-👉 GitHub Repository:
-https://github.com/Pantane1/your-repo-here
+👉 [![Repo](https://img.shields.io/badge/GitHub-Pantane1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pantane1/pantaneai)
 
 📥 Feedback & Collaboration
 
 Your feedback means everything as I continue improving this project.
 If you’d like to share ideas, report issues, or collaborate:
 
-📧 Email me: pantane254@gmail.com
+📧 [![Email_Me](https://img.shields.io/badge/Email-pantane254@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pantane254@gmail.com)
+⚛️ [![Chat_me](https://img.shields.io/badge/WhatsApp-Chat-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/254740312402?text=Hi%20Pantane)
 
 🤝 Contributions
 
@@ -59,28 +58,9 @@ OpenAI / API Integration
 
 ⭐ Support the Project
 
-If this project inspired you or helped you, consider giving it a star ⭐ on GitHub.
+If this project inspired you or helped you, consider giving it a star ⭐ on [![GitHub](https://img.shields.io/badge/GitHub-Pantane1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pantane1).
 
 
+follow me::
+[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/yourprofile)
 
-
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1yYiKE99ff3i_QpJJ8xFeUYId-QSnrV6A
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
