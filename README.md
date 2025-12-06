@@ -1,5 +1,5 @@
 ## Pantane AI Assistant
-
+![AI]()
 Welcome to the official repository for Pantane AI Assistant, a lightweight and modern AI-powered web application built to deliver fast, conversational, and intelligent responses.
 
 This is the public launch, and the project is still evolving every day.
