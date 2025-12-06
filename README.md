@@ -61,6 +61,5 @@ OpenAI / API Integration
 If this project inspired you or helped you, consider giving it a star ⭐ on [![GitHub](https://img.shields.io/badge/GitHub-Pantane1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pantane1).
 
 
-follow me::
-[![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/yourprofile)
+[![Instagram](https://img.shields.io/badge/Follow-me-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/yourprofile)
 
