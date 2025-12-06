@@ -29,9 +29,9 @@ If you have feedback, suggestions, or ideas — I’d love to hear from you.
 
 🌐 Live Demo
 
-👉 [![PantaneAI](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://pantaneai.netlify.app/)
+👉 [![PantaneAI](https://img.shields.io/badge/Live-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://pantaneai.netlify.app/)
 
-👉 [![Repo](https://img.shields.io/badge/GitHub-Pantane1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pantane1/pantaneai)
+👉 [![Repo](https://img.shields.io/badge/GitHub-Repo-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pantane1/pantaneai)
 
 📥 Feedback & Collaboration
 
@@ -39,7 +39,7 @@ Your feedback means everything as I continue improving this project.
 If you’d like to share ideas, report issues, or collaborate:
 
  [![Email_Me](https://img.shields.io/badge/Email-me-red?style=for-the-badge&logo=gmail&logoColor=white)](mailto:pantane254@gmail.com)
- [![Chat_me](https://img.shields.io/badge/WhatsApp-Chat-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/254740312402?text=Hi%20Pantane)
+ [![Chat_me](https://img.shields.io/badge/Chat-me-green?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/254740312402?text=Hi%20Pantane)
 
 🤝 Contributions
 
